@@ -68,7 +68,7 @@ Ext.onReady(function(){
 								id:'search_sid',
 								xtype:'textfield',
 								//flex: 1,
-								width: 200,
+								width: 50,
 								listeners: {
 									keypress:{
             									element: 'el',
@@ -85,7 +85,7 @@ Ext.onReady(function(){
 								id:'search_category',
 								xtype:'combobox',
 								//flex: 1,
-								width: 200,
+								width: 100,
 								listeners: {
 									keypress:{
             									element: 'el',
@@ -102,7 +102,7 @@ Ext.onReady(function(){
 							{
 								id:'search_keyword',
 								xtype:'textfield',
-								flex: 3,
+								flex: 1,
 								listeners: {
 									keypress:{
             									element: 'el',
@@ -113,8 +113,7 @@ Ext.onReady(function(){
 							{
 								text: '<b>搜尋</b>',
 								iconCls: 'icon-search',
-								width: 200,
-								flex: 0.5,
+								width: 100,
 								handler:search
 							}
 						]
