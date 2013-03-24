@@ -1,11 +1,12 @@
 Ext.onReady(function(){
-	store = Ext.create('Ext.data.ArrayStore', {
+	store = Ext.create('Ext.data.Store', {
 		fields:['id', 'sid', 'category', 'label', 'artist'],
 		proxy: {
 			type: 'ajax',
 			url: '/songlists.json',
 			reader: {
 				type: 'json',
+				root: 'data'
 			}
 		},
 		autoLoad:true
@@ -66,7 +67,8 @@ Ext.onReady(function(){
 							{
 								id:'search_sid',
 								xtype:'textfield',
-								flex: 0.2,
+								//flex: 1,
+								width: 200,
 								listeners: {
 									keypress:{
             									element: 'el',
@@ -81,14 +83,16 @@ Ext.onReady(function(){
 							},
 							{
 								id:'search_category',
-								xtype:'textfield',
-								flex: 0.2,
+								xtype:'combobox',
+								//flex: 1,
+								width: 200,
 								listeners: {
 									keypress:{
             									element: 'el',
 										fn:search
 									}
-								}
+								},
+								store: ["3","7","A","C","D","E","F","G","H","J","K","M","O","P","Q","T","V","X","Y","Z"].sort()
 							},
 							{
 								xtype:'label',
@@ -98,7 +102,7 @@ Ext.onReady(function(){
 							{
 								id:'search_keyword',
 								xtype:'textfield',
-								flex: 2,
+								flex: 3,
 								listeners: {
 									keypress:{
             									element: 'el',
@@ -107,7 +111,7 @@ Ext.onReady(function(){
 								}
 							},
 							{
-								text: '搜尋',
+								text: '<b>搜尋</b>',
 								iconCls: 'icon-search',
 								width: 200,
 								flex: 0.5,

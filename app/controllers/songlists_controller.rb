@@ -13,9 +13,15 @@ class SonglistsController < ApplicationController
 
     @songlists = @songlists.order(:sid).limit(200)
 
+    categories = Songlist.select(:category).group(:category)
+    r = []
+    categories.each do |c|
+      r << c.category
+    end
+
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @songlists }
+      format.json { render json: {:data=>@songlists,:categories=>r} }
     end
   end
 
