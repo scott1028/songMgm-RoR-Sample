@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Sid:</b>
+  <%= @songlist.sid %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @songlist.category %>
+</p>
+
+<p>
+  <b>Label:</b>
+  <%= @songlist.label %>
+</p>
+
+<p>
+  <b>Artist:</b>
+  <%= @songlist.artist %>
+</p>
+
+
+<%= link_to 'Edit', edit_songlist_path(@songlist) %> |
+<%= link_to 'Back', songlists_path %>
