@@ -39,3 +39,7 @@ gem 'jquery-rails'
 
 gem 'seed_dump'
 gem 'extjs-rails'
+
+gem 'pg'
+
+#gem 'activerecord-sqlite3-adapter'
