@@ -66,7 +66,13 @@ Ext.onReady(function(){
 							{
 								id:'search_sid',
 								xtype:'textfield',
-								flex: 0.2,							
+								flex: 0.2,
+								listeners: {
+									keypress:{
+            									element: 'el',
+										fn:search
+									}
+								}
 							},
 							{
 								xtype:'label',
@@ -76,7 +82,13 @@ Ext.onReady(function(){
 							{
 								id:'search_category',
 								xtype:'textfield',
-								flex: 0.2,							
+								flex: 0.2,
+								listeners: {
+									keypress:{
+            									element: 'el',
+										fn:search
+									}
+								}
 							},
 							{
 								xtype:'label',
@@ -88,7 +100,7 @@ Ext.onReady(function(){
 								xtype:'textfield',
 								flex: 2,
 								listeners: {
-									change:{
+									keypress:{
             									element: 'el',
 										fn:search
 									}
@@ -110,15 +122,17 @@ Ext.onReady(function(){
 });
 
 //處裡搜尋的部分
-var search=function(){
-	var _store=Ext.getCmp('main_grid').store;
-	
-	var _proxy=_store.getProxy();
-	_proxy.extraParams={
-		sid:Ext.getCmp('search_sid').value,
-		category:Ext.getCmp('search_category').value,
-		keyword:Ext.getCmp('search_keyword').value
-	};
+var search=function(event,dom,cmp){
+	if(event.button==12 || event.button==undefined){
+		var _store=Ext.getCmp('main_grid').store;
+		
+		var _proxy=_store.getProxy();
+		_proxy.extraParams={
+			sid:Ext.getCmp('search_sid').value,
+			category:Ext.getCmp('search_category').value,
+			keyword:Ext.getCmp('search_keyword').value
+		};
 
-	_store.load();
+		_store.load();
+	}
 }
